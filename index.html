@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>企业文化升级建议汇报</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* === THEME VARIABLES === */
+        :root {
+            --bg-primary: #08111f;
+            --bg-secondary: #10233f;
+            --bg-tertiary: #14325b;
+            --bg-panel: rgba(245, 248, 252, 0.08);
+            --bg-panel-strong: rgba(255, 255, 255, 0.12);
+            --text-primary: #f4f7fb;
+            --text-secondary: #aebbcf;
+            --text-muted: #7e90a9;
+            --accent: #72e0ff;
+            --accent-strong: #1f78ff;
+            --accent-warm: #9fe870;
+            --danger: #ff7b72;
+            --line: rgba(255, 255, 255, 0.11);
+            --shadow: 0 22px 60px rgba(0, 0, 0, 0.3);
+            --font-display: "Fraunces", serif;
+            --font-body: "Manrope", sans-serif;
+            --title-size: clamp(1.8rem, 5.4vw, 4.8rem);
+            --h2-size: clamp(1.35rem, 3.4vw, 2.6rem);
+            --h3-size: clamp(0.95rem, 2vw, 1.35rem);
+            --body-size: clamp(0.76rem, 1.25vw, 1rem);
+            --small-size: clamp(0.62rem, 0.9vw, 0.82rem);
+            --slide-padding: clamp(1rem, 4vw, 4rem);
+            --content-gap: clamp(0.7rem, 1.8vw, 1.75rem);
+            --element-gap: clamp(0.35rem, 0.9vw, 0.75rem);
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --duration-normal: 0.7s;
+        }
+
+        /* === RESET === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at top right, rgba(31, 120, 255, 0.22), transparent 30%),
+                radial-gradient(circle at bottom left, rgba(114, 224, 255, 0.18), transparent 35%),
+                linear-gradient(135deg, var(--bg-primary) 0%, #0c1a30 46%, #07101a 100%);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+        }
+
+        /* === VIEWPORT BASE CSS === */
+        html, body {
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .slide-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-height: 100%;
+            overflow: hidden;
+            padding: var(--slide-padding);
+        }
+
+        :root {
+            --title-size: clamp(1.5rem, 5vw, 4rem);
+            --h2-size: clamp(1.25rem, 3.5vw, 2.5rem);
+            --h3-size: clamp(1rem, 2.5vw, 1.75rem);
+            --body-size: clamp(0.75rem, 1.5vw, 1.125rem);
+            --small-size: clamp(0.65rem, 1vw, 0.875rem);
+            --slide-padding: clamp(1rem, 4vw, 4rem);
+            --content-gap: clamp(0.5rem, 2vw, 2rem);
+            --element-gap: clamp(0.25rem, 1vw, 1rem);
+        }
+
+        .card, .container, .content-box {
+            max-width: min(90vw, 1000px);
+            max-height: min(80vh, 700px);
+        }
+
+        .feature-list, .bullet-list {
+            gap: clamp(0.4rem, 1vh, 1rem);
+        }
+
+        .feature-list li, .bullet-list li {
+            font-size: var(--body-size);
+            line-height: 1.4;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+            gap: clamp(0.5rem, 1.5vw, 1rem);
+        }
+
+        img, .image-container {
+            max-width: 100%;
+            max-height: min(50vh, 400px);
+            object-fit: contain;
+        }
+
+        @media (max-height: 700px) {
+            :root {
+                --slide-padding: clamp(0.75rem, 3vw, 2rem);
+                --content-gap: clamp(0.4rem, 1.5vw, 1rem);
+                --title-size: clamp(1.25rem, 4.5vw, 2.5rem);
+                --h2-size: clamp(1rem, 3vw, 1.75rem);
+            }
+        }
+
+        @media (max-height: 600px) {
+            :root {
+                --slide-padding: clamp(0.5rem, 2.5vw, 1.5rem);
+                --content-gap: clamp(0.3rem, 1vw, 0.75rem);
+                --title-size: clamp(1.1rem, 4vw, 2rem);
+                --body-size: clamp(0.7rem, 1.2vw, 0.95rem);
+            }
+
+            .nav-dots, .keyboard-hint, .decorative {
+                display: none;
+            }
+        }
+
+        @media (max-height: 500px) {
+            :root {
+                --slide-padding: clamp(0.4rem, 2vw, 1rem);
+                --title-size: clamp(1rem, 3.5vw, 1.5rem);
+                --h2-size: clamp(0.9rem, 2.5vw, 1.25rem);
+                --body-size: clamp(0.65rem, 1vw, 0.85rem);
+            }
+        }
+
+        @media (max-width: 600px) {
+            :root {
+                --title-size: clamp(1.25rem, 7vw, 2.5rem);
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.2s !important;
+            }
+
+            html {
+                scroll-behavior: auto;
+            }
+        }
+
+        @page {
+            size: 16in 9in;
+            margin: 0;
+        }
+
+        @media print {
+            :root {
+                --title-size: 4.9rem;
+                --h2-size: 2.8rem;
+                --h3-size: 1.45rem;
+                --body-size: 1.1rem;
+                --small-size: 0.88rem;
+                --slide-padding: 1.15in;
+                --content-gap: 0.38in;
+                --element-gap: 0.16in;
+            }
+
+            html, body {
+                width: 16in;
+                height: auto;
+                overflow: visible;
+                background: #08111f !important;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            .progress-bar,
+            .nav-dots,
+            .cursor-dot,
+            .cursor-trail {
+                display: none !important;
+            }
+
+            .slide {
+                width: 16in;
+                height: 9in;
+                min-height: 9in;
+                break-after: page;
+                page-break-after: always;
+                overflow: hidden;
+            }
+
+            .slide:last-of-type {
+                break-after: auto;
+                page-break-after: auto;
+            }
+
+            .headline,
+            .section-title,
+            .big-statement {
+                max-width: 100%;
+            }
+
+            .section-copy,
+            .card-copy,
+            .value-copy,
+            .action-card .good,
+            .action-card .bad,
+            .bullet-list li,
+            .approval-list li,
+            .footer-note {
+                font-size: 1.02rem !important;
+                line-height: 1.52 !important;
+            }
+
+            .metric-label,
+            .card-title,
+            .value-title,
+            .panel-title {
+                font-size: 1.08rem !important;
+                line-height: 1.35 !important;
+            }
+
+            .metric-number {
+                font-size: 2.2rem !important;
+            }
+
+            .reveal,
+            .reveal-left,
+            .reveal-scale,
+            .slide.visible .reveal,
+            .slide.visible .reveal-left,
+            .slide.visible .reveal-scale {
+                opacity: 1 !important;
+                transform: none !important;
+                filter: none !important;
+            }
+        }
+
+        /* === GLOBAL COMPONENTS === */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-strong), var(--accent));
+            z-index: 1200;
+            box-shadow: 0 0 24px rgba(114, 224, 255, 0.55);
+        }
+
+        .cursor-dot,
+        .cursor-trail {
+            position: fixed;
+            top: 0;
+            left: 0;
+            border-radius: 999px;
+            pointer-events: none;
+            z-index: 1400;
+            opacity: 0;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.22s ease;
+            mix-blend-mode: normal;
+        }
+
+        .cursor-dot {
+            width: 0.8rem;
+            height: 0.8rem;
+            background: radial-gradient(circle, rgba(194, 244, 255, 1) 0%, rgba(114, 224, 255, 0.98) 42%, rgba(31, 120, 255, 0.88) 74%, rgba(31, 120, 255, 0.38) 100%);
+            box-shadow: 0 0 16px rgba(114, 224, 255, 0.95), 0 0 34px rgba(31, 120, 255, 0.58);
+        }
+
+        .cursor-trail {
+            width: 5.2rem;
+            height: 5.2rem;
+            background: radial-gradient(circle, rgba(114, 224, 255, 0.34) 0%, rgba(31, 120, 255, 0.18) 42%, rgba(31, 120, 255, 0.06) 60%, rgba(31, 120, 255, 0) 76%);
+            filter: blur(2px);
+        }
+
+        body.cursor-active .cursor-dot,
+        body.cursor-active .cursor-trail {
+            opacity: 1;
+        }
+
+        .nav-dots {
+            position: fixed;
+            right: clamp(0.75rem, 1.5vw, 1.5rem);
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            z-index: 1100;
+        }
+
+        .nav-dot {
+            width: 0.7rem;
+            height: 0.7rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            background: rgba(255, 255, 255, 0.12);
+            cursor: pointer;
+            transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+        }
+
+        .nav-dot.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: scale(1.15);
+        }
+
+        .slide-shell {
+            padding: var(--slide-padding);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: var(--content-gap);
+            position: relative;
+            z-index: 2;
+        }
+
+        .eyebrow {
+            font-size: var(--small-size);
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .kicker {
+            font-size: var(--small-size);
+            color: var(--text-secondary);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .headline {
+            font-family: var(--font-display);
+            font-size: var(--title-size);
+            line-height: 0.96;
+            max-width: min(78vw, 11ch);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: var(--h2-size);
+            line-height: 1.02;
+            max-width: min(72vw, 14ch);
+        }
+
+        .section-copy {
+            font-size: var(--body-size);
+            line-height: 1.5;
+            color: var(--text-secondary);
+            max-width: min(72vw, 52ch);
+        }
+
+        .muted {
+            color: var(--text-muted);
+        }
+
+        .signal-bar {
+            width: min(18rem, 30vw);
+            height: clamp(0.3rem, 0.7vw, 0.45rem);
+            border-radius: 999px;
+            background: linear-gradient(90deg, var(--accent-strong), var(--accent));
+            box-shadow: 0 0 28px rgba(31, 120, 255, 0.35);
+        }
+
+        .split-layout {
+            display: grid;
+            grid-template-columns: 1.25fr 0.95fr;
+            gap: clamp(1rem, 2vw, 2rem);
+            align-items: stretch;
+            min-height: 0;
+        }
+
+        .panel {
+            border: 1px solid var(--line);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+            border-radius: clamp(1rem, 2vw, 1.5rem);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(16px);
+        }
+
+        .hero-panel {
+            padding: clamp(1.1rem, 2.4vw, 2rem);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: min(56vh, 520px);
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: clamp(0.75rem, 1.4vw, 1rem);
+        }
+
+        .metric-card,
+        .priority-card,
+        .principle-card,
+        .lever-card,
+        .value-card {
+            border-radius: clamp(1rem, 2vw, 1.35rem);
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.06);
+            padding: clamp(0.85rem, 1.6vw, 1.2rem);
+            min-height: 0;
+        }
+
+        .metric-number {
+            font-size: clamp(1.2rem, 2.8vw, 2rem);
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        .metric-label,
+        .card-title,
+        .value-title {
+            font-size: clamp(0.78rem, 1.2vw, 0.98rem);
+            font-weight: 700;
+            line-height: 1.35;
+        }
+
+        .card-copy,
+        .value-copy {
+            margin-top: 0.45rem;
+            color: var(--text-secondary);
+            font-size: clamp(0.7rem, 1vw, 0.88rem);
+            line-height: 1.45;
+        }
+
+        .priority-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: clamp(0.8rem, 1.5vw, 1rem);
+        }
+
+        .priority-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: min(42vh, 360px);
+        }
+
+        .card-tag {
+            align-self: flex-start;
+            font-size: var(--small-size);
+            padding: 0.28rem 0.6rem;
+            border-radius: 999px;
+            border: 1px solid rgba(114, 224, 255, 0.35);
+            color: var(--accent);
+            background: rgba(114, 224, 255, 0.08);
+        }
+
+        .bullet-list {
+            list-style: none;
+            display: grid;
+            gap: clamp(0.5rem, 0.9vh, 0.8rem);
+            margin-top: 0.8rem;
+        }
+
+        .bullet-list li {
+            position: relative;
+            padding-left: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .bullet-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.55em;
+            width: 0.42rem;
+            height: 0.42rem;
+            border-radius: 50%;
+            background: linear-gradient(180deg, var(--accent), var(--accent-strong));
+        }
+
+        .contrast-grid {
+            display: grid;
+            grid-template-columns: 0.95fr 1.05fr;
+            gap: clamp(0.9rem, 1.7vw, 1.2rem);
+        }
+
+        .contrast-panel {
+            padding: clamp(1rem, 1.8vw, 1.4rem);
+            border-radius: clamp(1rem, 2vw, 1.5rem);
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .contrast-panel.old {
+            background: linear-gradient(180deg, rgba(255, 123, 114, 0.08), rgba(255, 123, 114, 0.03));
+            border-color: rgba(255, 123, 114, 0.25);
+        }
+
+        .contrast-panel.new {
+            background: linear-gradient(180deg, rgba(114, 224, 255, 0.08), rgba(114, 224, 255, 0.03));
+            border-color: rgba(114, 224, 255, 0.25);
+        }
+
+        .panel-title {
+            font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+            font-weight: 800;
+            margin-bottom: 0.6rem;
+        }
+
+        .capability-grid {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: clamp(0.6rem, 1vw, 0.85rem);
+        }
+
+        .capability-card {
+            padding: clamp(0.8rem, 1.4vw, 1rem);
+            border-radius: clamp(0.9rem, 1.6vw, 1.2rem);
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .dual-panel {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(0.9rem, 1.8vw, 1.4rem);
+        }
+
+        .mission-box {
+            padding: clamp(1rem, 2vw, 1.4rem);
+            border-radius: clamp(1rem, 1.8vw, 1.4rem);
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.05);
+            min-height: min(34vh, 280px);
+        }
+
+        .big-statement {
+            font-family: var(--font-display);
+            font-size: clamp(1.3rem, 3vw, 2.35rem);
+            line-height: 1.1;
+            margin-bottom: 0.8rem;
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: clamp(0.65rem, 1.1vw, 0.9rem);
+        }
+
+        .value-card {
+            min-height: min(32vh, 260px);
+        }
+
+        .value-index {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 999px;
+            margin-bottom: 0.8rem;
+            background: rgba(114, 224, 255, 0.12);
+            color: var(--accent);
+            font-weight: 800;
+            font-size: clamp(0.72rem, 1vw, 0.86rem);
+        }
+
+        .action-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: clamp(0.8rem, 1.3vw, 1rem);
+        }
+
+        .action-grid.two-up {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .action-card {
+            padding: clamp(0.95rem, 1.6vw, 1.15rem);
+            border-radius: clamp(1rem, 1.8vw, 1.35rem);
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+
+        .action-card .good,
+        .action-card .bad {
+            font-size: clamp(0.68rem, 0.96vw, 0.82rem);
+            line-height: 1.45;
+            color: var(--text-secondary);
+        }
+
+        .action-card .good strong {
+            color: var(--accent-warm);
+        }
+
+        .action-card .bad strong {
+            color: var(--danger);
+        }
+
+        .principle-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: clamp(0.8rem, 1.3vw, 1rem);
+        }
+
+        .manager-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(0.9rem, 1.8vw, 1.4rem);
+        }
+
+        .standard-panel {
+            padding: clamp(1rem, 2vw, 1.4rem);
+            border-radius: clamp(1rem, 1.8vw, 1.35rem);
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .standard-panel.good {
+            border-color: rgba(159, 232, 112, 0.25);
+            background: linear-gradient(180deg, rgba(159, 232, 112, 0.08), rgba(159, 232, 112, 0.03));
+        }
+
+        .standard-panel.bad {
+            border-color: rgba(255, 123, 114, 0.25);
+            background: linear-gradient(180deg, rgba(255, 123, 114, 0.08), rgba(255, 123, 114, 0.03));
+        }
+
+        .lever-grid {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: clamp(0.65rem, 1vw, 0.9rem);
+        }
+
+        .approval-box {
+            width: min(100%, 920px);
+            padding: clamp(1rem, 2vw, 1.5rem);
+            border-radius: clamp(1rem, 1.8vw, 1.35rem);
+            border: 1px solid rgba(114, 224, 255, 0.25);
+            background: linear-gradient(180deg, rgba(31, 120, 255, 0.14), rgba(114, 224, 255, 0.05));
+            box-shadow: var(--shadow);
+        }
+
+        .approval-list {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+            margin-top: 1rem;
+        }
+
+        .approval-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.7rem;
+            font-size: var(--body-size);
+            color: var(--text-secondary);
+        }
+
+        .approval-list li span {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 1.55rem;
+            height: 1.55rem;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 800;
+            color: var(--bg-primary);
+            background: var(--accent);
+        }
+
+        .footer-note {
+            margin-top: 1rem;
+            color: var(--text-muted);
+            font-size: var(--small-size);
+            letter-spacing: 0.04em;
+        }
+
+        .reveal,
+        .reveal-left,
+        .reveal-scale {
+            opacity: 0;
+            transition:
+                opacity var(--duration-normal) var(--ease-out-expo),
+                transform var(--duration-normal) var(--ease-out-expo),
+                filter var(--duration-normal) var(--ease-out-expo);
+        }
+
+        .reveal {
+            transform: translateY(clamp(14px, 2vw, 24px));
+        }
+
+        .reveal-left {
+            transform: translateX(clamp(-16px, -2vw, -24px));
+        }
+
+        .reveal-scale {
+            transform: scale(0.96);
+            filter: blur(8px);
+        }
+
+        .slide.visible .reveal,
+        .slide.visible .reveal-left,
+        .slide.visible .reveal-scale {
+            opacity: 1;
+            transform: translateY(0) translateX(0) scale(1);
+            filter: blur(0);
+        }
+
+        .delay-1 { transition-delay: 0.08s; }
+        .delay-2 { transition-delay: 0.16s; }
+        .delay-3 { transition-delay: 0.24s; }
+        .delay-4 { transition-delay: 0.32s; }
+        .delay-5 { transition-delay: 0.4s; }
+
+        .decorative::before,
+        .decorative::after {
+            content: "";
+            position: absolute;
+            inset: auto;
+            pointer-events: none;
+        }
+
+        .grid-orbit::before {
+            width: min(36vw, 420px);
+            height: min(36vw, 420px);
+            right: calc(-1 * clamp(3rem, 8vw, 7rem));
+            top: calc(-1 * clamp(2rem, 6vw, 5rem));
+            border-radius: 50%;
+            background:
+                radial-gradient(circle, rgba(114, 224, 255, 0.25) 0%, rgba(114, 224, 255, 0.08) 28%, transparent 55%);
+            filter: blur(6px);
+        }
+
+        .scan-lines::after {
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+            background-size: 54px 54px;
+            opacity: 0.45;
+        }
+
+        @media (max-width: 900px) {
+            .split-layout,
+            .contrast-grid,
+            .dual-panel,
+            .priority-grid,
+            .metric-grid,
+            .value-grid,
+            .action-grid,
+            .action-grid.two-up,
+            .principle-grid,
+            .manager-grid,
+            .lever-grid,
+            .capability-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .priority-card,
+            .value-card {
+                min-height: 0;
+            }
+
+            .headline,
+            .section-title,
+            .section-copy {
+                max-width: 100%;
+            }
+
+            .nav-dots {
+                right: 0.55rem;
+            }
+        }
+
+        body.windowed-mode {
+            background:
+                radial-gradient(circle at top right, rgba(31, 120, 255, 0.18), transparent 26%),
+                linear-gradient(180deg, #08111f 0%, #0c1a30 100%);
+        }
+
+        html.windowed-mode {
+            scroll-snap-type: none;
+        }
+
+        body.windowed-mode .progress-bar,
+        body.windowed-mode .nav-dots {
+            display: none;
+        }
+
+        body.windowed-mode .slide {
+            width: 100%;
+            height: auto;
+            min-height: 100vh;
+            overflow: visible;
+            scroll-snap-align: none;
+            padding-block: clamp(0.8rem, 2vw, 1.5rem);
+        }
+
+        body.windowed-mode .slide-content,
+        body.windowed-mode .slide-shell,
+        body.windowed-mode .hero-panel,
+        body.windowed-mode .priority-card,
+        body.windowed-mode .value-card,
+        body.windowed-mode .action-card,
+        body.windowed-mode .standard-panel {
+            max-height: none;
+            min-height: 0;
+            overflow: visible;
+        }
+
+        body.windowed-mode .headline,
+        body.windowed-mode .section-title,
+        body.windowed-mode .section-copy,
+        body.windowed-mode .big-statement {
+            max-width: 100%;
+        }
+
+        body.windowed-mode .slide + .slide {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar"></div>
+    <nav class="nav-dots" aria-label="Slide navigation"></nav>
+    <div class="cursor-trail" aria-hidden="true"></div>
+    <div class="cursor-dot" aria-hidden="true"></div>
+
+    <!-- === SLIDE 01: COVER === -->
+    <section class="slide title-slide decorative grid-orbit scan-lines visible">
+        <div class="slide-shell">
+            <div class="kicker reveal">CEO Approval Deck</div>
+            <div class="signal-bar reveal delay-1"></div>
+            <div class="hero-panel panel reveal-scale delay-2">
+                <div>
+                    <div class="eyebrow">Culture Upgrade Proposal</div>
+                    <h1 class="headline">企业文化升级建议汇报</h1>
+                </div>
+                <div class="section-copy">
+                    让企业文化真正服务战略、增长、组织协同与关键岗位选人标准。
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === SLIDE 02: WHY NOW === -->
+    <section class="slide decorative grid-orbit">
+        <div class="slide-shell">
+            <div class="eyebrow reveal">01 / Why Now</div>
+            <h2 class="section-title reveal delay-1">公司已经进入新阶段，旧文化不再够用。</h2>
+            <p class="section-copy reveal delay-2">这次升级不是文案优化，而是为了让组织在下一阶段有一致判断、统一标准和更强执行力。</p>
+            <div class="metric-grid">
+                <div class="metric-card reveal delay-2">
+                    <div class="metric-number">6</div>
+                    <div class="metric-label">CTFFR 全球 6 个地区完成注册</div>
+                    <div class="card-copy">公司已从产品验证阶段走向全球商业化兑现阶段。</div>
+                </div>
+                <div class="metric-card reveal delay-3">
+                    <div class="metric-number">2</div>
+                    <div class="metric-label">中美双主战场并行突破</div>
+                    <div class="card-copy">美国紧随 HTF 保持第一梯队，中国保持第一。</div>
+                </div>
+                <div class="metric-card reveal delay-4">
+                    <div class="metric-number">3+</div>
+                    <div class="metric-label">多产品与临床证据同步推进</div>
+                    <div class="card-copy">斑块、震波球囊、PCI 规划共同塑造下一增长曲线。</div>
+                </div>
+                <div class="metric-card reveal delay-5">
+                    <div class="metric-number">2028</div>
+                    <div class="metric-label">IPO 准备期已开始倒排</div>
+                    <div class="card-copy">组织标准必须提前升级，不能等到资本化前夕再补课。</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === SLIDE 03: WHAT TO WIN NEXT === -->
+    <section class="slide decorative scan-lines">
+        <div class="slide-shell">
+            <div class="eyebrow reveal">02 / Strategic Wins</div>
+            <h2 class="section-title reveal delay-1">下一阶段，公司真正要打赢三场仗。</h2>
+            <div class="priority-grid">
+                <article class="priority-card reveal delay-2">
+                    <div>
+                        <div class="card-tag">Market 01</div>
+                        <h3 class="card-title">美国市场</h3>
+                        <p class="card-copy">美国市场紧跟 HeartFlow，保持全球第一梯队，稳定增长。</p>
+                    </div>
+                    <ul class="bullet-list">
+                        <li>利用医保与政策环境优势加快落地。</li>
+                        <li>建立可信赖的全球竞争力。</li>
+                        <li>缩小与头部竞争对手的差距。</li>
+                    </ul>
+                </article>
+                <article class="priority-card reveal delay-3">
+                    <div>
+                        <div class="card-tag">Market 02</div>
+                        <h3 class="card-title">中国市场</h3>
+                        <p class="card-copy">中国市场必须建立第一地位，并突破指南、医保和价格体系。</p>
+                    </div>
+                    <ul class="bullet-list">
+                        <li>围绕国家指南、真实世界研究和定价路径持续推进。</li>
+                        <li>守住重点省份与大客户，形成稳定收入增长。</li>
+                        <li>把中国"唯一"的产品优势转化为市场领导地位。</li>
+                    </ul>
+                </article>
+                <article class="priority-card reveal delay-4">
+                    <div>
+                        <div class="card-tag">Portfolio 03</div>
+                        <h3 class="card-title">产品与资本故事</h3>
+                        <p class="card-copy">多产品注册、临床研究和商业化共同推进，形成增长与资本故事。</p>
+                    </div>
+                    <ul class="bullet-list">
+                        <li>持续优化CTFFR ，支撑核心收入与竞争壁垒。</li>
+                        <li>推动斑块、震波球囊、PCI 规划进入下一阶段。</li>
+                        <li>为 2028 年港股 IPO 建立业务与组织可信度。</li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- === SLIDE 04: WHY OLD CULTURE FAILS === -->
+    <section class="slide decorative grid-orbit">
+        <div class="slide-shell">
+            <div class="eyebrow reveal">03 / Diagnosis</div>
+            <h2 class="section-title reveal delay-1">旧版企业文化，支撑不了今天的公司。</h2>
+            <div class="contrast-grid">
+                <div class="contrast-panel old reveal delay-2">
+                    <div class="panel-title">旧版表达的问题</div>
+                    <ul class="bullet-list">
+                        <li>愿景使命过泛，像通用科技公司，不像深耕冠心病的公司。</li>
+                        <li>价值观抽象，无法回答鼓励什么行为、不接受什么行为。</li>
+                        <li>没有进入选人、带人、晋升和协作的判断标准。</li>
+                        <li>面对关键岗位能力弱、管理弱、协同弱时，缺少明确约束。</li>
+                    </ul>
+                </div>
+                <div class="contrast-panel new reveal delay-3">
+                    <div class="panel-title">今天真正需要的文化</div>
+                    <ul class="bullet-list">
+                        <li>服务战略，而不是停留在口号层。</li>
+                        <li>能指导跨部门协同，而不是只强调“团结”。</li>
+                        <li>能进入关键岗位选人和管理者要求。</li>
+                        <li>能让组织在中美双市场和多产品推进中保持同频执行。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === SLIDE 05: OPERATING SYSTEM === -->
+    <section class="slide decorative scan-lines">
+        <div class="slide-shell">
+            <div class="eyebrow reveal">04 / Operating System</div>
+            <h2 class="section-title reveal delay-1">这次升级，不是在改文案，而是在重建组织操作系统。</h2>
+            <p class="section-copy reveal delay-2">新版企业文化必须同时解决五件事，才能真正服务增长、协同和管理质量。</p>
+            <div class="capability-grid">
+                <div class="capability-card reveal delay-2">
+                    <div class="card-title">统一战略认知</div>
+                    <div class="card-copy">让大家清楚公司为什么做、先打赢什么。</div>
+                </div>
+                <div class="capability-card reveal delay-3">
+                    <div class="card-title">统一用人标准</div>
+                    <div class="card-copy">关键岗位选谁、留谁、升谁，要有一致判断。</div>
+                </div>
+                <div class="capability-card reveal delay-3">
+                    <div class="card-title">统一协作规则</div>
+                    <div class="card-copy">跨部门不是支持项，而是结果责任的一部分。</div>
+                </div>
+                <div class="capability-card reveal delay-4">
+                    <div class="card-title">统一管理要求</div>
+                    <div class="card-copy">管理者首先对结果负责，也必须对团队和协同负责。</div>
+                </div>
+                <div class="capability-card reveal delay-5">
+                    <div class="card-title">统一落地机制</div>
+                    <div class="card-copy">文化要进入招聘、绩效、晋升、干部盘点和项目复盘。</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === SLIDE 06: VISION AND MISSION === -->
+    <section class="slide decorative grid-orbit">
+        <div class="slide-shell">
+            <div class="eyebrow reveal">05 / Vision &amp; Mission</div>
+            <h2 class="section-title reveal delay-1">新版愿景与使命，需要更聚焦、更有行业指向。</h2>
+            <div class="dual-panel">
+                <div class="mission-box reveal delay-2">
+                    <div class="kicker">Vision 愿景</div>
+                    <div class="big-statement">让冠心病成为可管理、可预防、可早治的疾病</div>
+                    <div class="card-copy">聚焦冠心病，保留长期使命感，也为未来扩展到更广泛 AI 医疗场景留出空间。</div>
+                </div>
+                <div class="mission-box reveal delay-3">
+                    <div class="kicker">Mission 使命</div>
+                    <div class="big-statement">以人工智能与临床科学为基础，持续打造冠心病精准诊疗解决方案</div>
+                    <div class="card-copy">让创新真正服务医生决策与患者获益，不再停留在“赋能医疗”的泛化表达上。</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === SLIDE 07: VALUES OVERVIEW === -->
+    <section class="slide decorative scan-lines">
+        <div class="slide-shell">
+            <div class="eyebrow reveal">06 / Values Overview</div>
+            <h2 class="section-title reveal delay-1">新版价值观，不是抽象词，而是组织判断标准。</h2>
+            <div class="value-grid">
+                <div class="value-card reveal delay-1">
+                    <div class="value-index">01</div>
+                    <div class="value-title">以患者获益为终点</div>
+                    <div class="value-copy">技术和项目优先级，都要回到真实临床价值。</div>
+                </div>
+                <div class="value-card reveal delay-2">
+                    <div class="value-index">02</div>
+                    <div class="value-title">以临床和数据说话</div>
+                    <div class="value-copy">关键判断建立在证据、研究、数据与一线反馈上。</div>
+                </div>
+                <div class="value-card reveal delay-2">
+                    <div class="value-index">03</div>
+                    <div class="value-title">以结果为导向推进创新</div>
+                    <div class="value-copy">创新要落到注册、市场、收入和客户认可。</div>
+                </div>
+                <div class="value-card reveal delay-3">
+                    <div class="value-index">04</div>
+                    <div class="value-title">以全局视角推动协同</div>
+                    <div class="value-copy">部门目标必须服务公司目标，协同不是可选项。</div>
+                </div>
+                <div class="value-card reveal delay-4">
+                    <div class="value-index">05</div>
+                    <div class="value-title">以高标准要求自己和团队</div>
+                    <div class="value-copy">关键岗位、关键项目、关键决策都要有更高要求。</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === SLIDE 08: VALUES IN ACTION PART 1 === -->
+    <section class="slide decorative grid-orbit">
+        <div class="slide-shell">
+            <div class="eyebrow reveal">07 / Values In Action</div>
+            <h2 class="section-title reveal delay-1">价值观必须能落到“坚持什么 / 反对什么”。</h2>
+            <div class="action-grid">
+                <article class="action-card reveal delay-2">
+                    <div class="value-title">以患者获益为终点</div>
+                    <div class="good"><strong>坚持：</strong>从临床价值出发判断产品和项目优先级，关注医生是否愿意用、患者是否真正受益。</div>
+                    <div class="bad"><strong>反对：</strong>只讲技术先进，不关注真实应用价值；只做自己感兴趣的事，不对临床结果负责。</div>
+                </article>
+                <article class="action-card reveal delay-3">
+                    <div class="value-title">以临床和数据说话</div>
+                    <div class="good"><strong>坚持：</strong>重要判断建立在证据、研究、数据和一线反馈上；尊重医学规律和监管要求。</div>
+                    <div class="bad"><strong>反对：</strong>凭经验拍板、选择性解释数据、为了短期推进忽略科学和合规边界。</div>
+                </article>
+                <article class="action-card reveal delay-4">
+                    <div class="value-title">以结果为导向推进创新</div>
+                    <div class="good"><strong>坚持：</strong>围绕关键目标持续突破，把创新落到注册、市场、收入、研究成果和客户认可上。</div>
+                    <div class="bad"><strong>反对：</strong>停留在想法层面，做了很多动作但没有结果；遇到问题反复解释、不推动解决。</div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- === SLIDE 09: VALUES IN ACTION PART 2 === -->
+    <section class="slide decorative scan-lines">
+        <div class="slide-shell">
+            <div class="eyebrow reveal">08 / Values In Action</div>
+            <h2 class="section-title reveal delay-1">文化不是“说得好”，而是能约束协作和管理。</h2>
+            <div class="action-grid two-up">
+                <article class="action-card reveal delay-2">
+                    <div class="value-title">以全局视角推动协同</div>
+                    <div class="good"><strong>坚持：</strong>先看公司目标，再看部门分工；主动补位、及时沟通、对跨部门结果共同负责。</div>
+                    <div class="bad"><strong>反对：</strong>只站在本部门立场做事、信息不透明、把配合当成人情、把问题推给别人。</div>
+                </article>
+                <article class="action-card reveal delay-3">
+                    <div class="value-title">以高标准要求自己和团队</div>
+                    <div class="good"><strong>坚持：</strong>对关键岗位、关键项目、关键决策保持高标准，敢于指出问题，也敢于优化人和机制。</div>
+                    <div class="bad"><strong>反对：</strong>降低用人标准、回避管理问题、对低绩效和低协同长期容忍。</div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- === SLIDE 10: COLLABORATION PRINCIPLES === -->
+    <section class="slide decorative grid-orbit">
+        <div class="slide-shell">
+            <div class="eyebrow reveal">09 / Collaboration Rules</div>
+            <h2 class="section-title reveal delay-1">跨部门协作，不是支持项，而是组织结果的一部分。</h2>
+            <div class="principle-grid">
+                <div class="principle-card reveal delay-2">
+                    <div class="card-title">目标优先级一致</div>
+                    <div class="card-copy">公司目标优先于部门目标，不能只追求局部最优。</div>
+                </div>
+                <div class="principle-card reveal delay-2">
+                    <div class="card-title">共同结果共同负责</div>
+                    <div class="card-copy">对跨部门结果不旁观，不把失败定义成“别人没配合”。</div>
+                </div>
+                <div class="principle-card reveal delay-3">
+                    <div class="card-title">信息透明</div>
+                    <div class="card-copy">信息透明是协作前提，不得选择性沟通和选择性同步。</div>
+                </div>
+                <div class="principle-card reveal delay-3">
+                    <div class="card-title">先解题再归责</div>
+                    <div class="card-copy">出现分歧先解决问题，再讨论责任和复盘机制。</div>
+                </div>
+                <div class="principle-card reveal delay-4">
+                    <div class="card-title">内外口径一致</div>
+                    <div class="card-copy">对外承诺、对内协同、对上反馈必须一致，不能各说各话。</div>
+                </div>
+                <div class="principle-card reveal delay-5">
+                    <div class="card-title">不配合就是失效</div>
+                    <div class="card-copy">不配合、不补位、不闭环，本质上就是组织失效。</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === SLIDE 11: MANAGER STANDARD === -->
+    <section class="slide decorative scan-lines">
+        <div class="slide-shell">
+            <div class="eyebrow reveal">10 / Manager Bar</div>
+            <h2 class="section-title reveal delay-1">管理者标准，决定公司能否把文化变成执行力。</h2>
+            <div class="manager-grid">
+                <div class="standard-panel good reveal delay-2">
+                    <div class="panel-title">管理者必须做到</div>
+                    <ul class="bullet-list">
+                        <li>首先对结果负责，而不是对理由负责。</li>
+                        <li>具备跨部门协同能力，不能把团队做成信息孤岛。</li>
+                        <li>能带队、能判断、能推动闭环，不只是占一个岗位。</li>
+                        <li>关键岗位选人同时看专业能力、结果意识、协同意识、价值观一致性。</li>
+                    </ul>
+                </div>
+                <div class="standard-panel bad reveal delay-3">
+                    <div class="panel-title">公司不应长期接受</div>
+                    <ul class="bullet-list">
+                        <li>不能持续创造结果，却长期处在关键管理岗位。</li>
+                        <li>只管理本部门，不愿协同，也不补位。</li>
+                        <li>对低绩效、低协同和低标准长期容忍。</li>
+                        <li>把管理问题解释成资源问题，却不推动改进。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === SLIDE 12: MECHANISMS === -->
+    <section class="slide decorative grid-orbit">
+        <div class="slide-shell">
+            <div class="eyebrow reveal">11 / Mechanisms</div>
+            <h2 class="section-title reveal delay-1">文化只有进入机制，才会真正影响结果。</h2>
+            <div class="lever-grid">
+                <div class="lever-card reveal delay-2">
+                    <div class="card-title">招聘</div>
+                    <div class="card-copy">进入关键岗位画像、面试题库和录用判断。</div>
+                </div>
+                <div class="lever-card reveal delay-2">
+                    <div class="card-title">晋升</div>
+                    <div class="card-copy">管理岗晋升必须看协同、带队和示范作用。</div>
+                </div>
+                <div class="lever-card reveal delay-3">
+                    <div class="card-title">绩效</div>
+                    <div class="card-copy">既看结果，也看结果是如何达成的。</div>
+                </div>
+                <div class="lever-card reveal delay-4">
+                    <div class="card-title">干部盘点</div>
+                    <div class="card-copy">定期识别高潜、错配和不适配管理者。</div>
+                </div>
+                <div class="lever-card reveal delay-5">
+                    <div class="card-title">项目复盘</div>
+                    <div class="card-copy">把文化标准放进关键项目和跨部门项目复盘。</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === SLIDE 13: CEO APPROVAL === -->
+    <section class="slide decorative scan-lines">
+        <div class="slide-shell">
+            <div class="eyebrow reveal">12 / Approval</div>
+            <h2 class="section-title reveal delay-1">本次汇报，希望 CEO 拍板三件事。</h2>
+            <div class="approval-box reveal-scale delay-2">
+                <ul class="approval-list">
+                    <li><span>1</span><div>确认新版愿景、使命、价值观方向，作为公司下一阶段的统一文化框架。</div></li>
+                    <li><span>2</span><div>确认跨部门协作原则与管理者要求，作为关键岗位选人和带队标准。</div></li>
+                    <li><span>3</span><div>授权 HR 联合管理层完成宣导、机制嵌入与阶段复盘，推动文化真正进入组织运行。</div></li>
+                </ul>
+                <div class="footer-note">企业文化不是展示给外部看的口号，而是统一判断、筛选人才、推动协同和达成结果的底层规则。</div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        /* === SLIDE PRESENTATION CONTROLLER === */
+        class SlidePresentation {
+            constructor() {
+                this.slides = Array.from(document.querySelectorAll(".slide"));
+                this.progressBar = document.querySelector(".progress-bar");
+                this.navDots = document.querySelector(".nav-dots");
+                this.cursorDot = document.querySelector(".cursor-dot");
+                this.cursorTrail = document.querySelector(".cursor-trail");
+                this.currentSlide = 0;
+                this.isAnimating = false;
+                this.touchStartY = 0;
+                this.touchEndY = 0;
+                if (this.slides[0]) {
+                    this.slides[0].classList.add("visible");
+                }
+                this.setupIntersectionObserver();
+                this.setupKeyboardNav();
+                this.setupWheelNav();
+                this.setupTouchNav();
+                this.setupProgressBar();
+                this.setupNavDots();
+                this.setupWindowedMode();
+                this.setupCursorEffect();
+                this.updateActiveState(0);
+            }
+
+            setupIntersectionObserver() {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            const index = this.slides.indexOf(entry.target);
+                            entry.target.classList.add("visible");
+                            this.updateActiveState(index);
+                        }
+                    });
+                }, {
+                    threshold: 0.55
+                });
+
+                this.slides.forEach((slide) => observer.observe(slide));
+            }
+
+            setupKeyboardNav() {
+                window.addEventListener("keydown", (event) => {
+                    if (["ArrowDown", "PageDown", " "].includes(event.key)) {
+                        event.preventDefault();
+                        this.goToSlide(this.currentSlide + 1);
+                    }
+                    if (["ArrowUp", "PageUp"].includes(event.key)) {
+                        event.preventDefault();
+                        this.goToSlide(this.currentSlide - 1);
+                    }
+                });
+            }
+
+            setupWheelNav() {
+                window.addEventListener("wheel", (event) => {
+                    if (this.isAnimating) return;
+                    if (Math.abs(event.deltaY) < 35) return;
+                    this.goToSlide(this.currentSlide + (event.deltaY > 0 ? 1 : -1));
+                }, { passive: true });
+            }
+
+            setupTouchNav() {
+                window.addEventListener("touchstart", (event) => {
+                    this.touchStartY = event.changedTouches[0].screenY;
+                }, { passive: true });
+
+                window.addEventListener("touchend", (event) => {
+                    this.touchEndY = event.changedTouches[0].screenY;
+                    const delta = this.touchStartY - this.touchEndY;
+                    if (Math.abs(delta) < 50) return;
+                    this.goToSlide(this.currentSlide + (delta > 0 ? 1 : -1));
+                }, { passive: true });
+            }
+
+            setupProgressBar() {
+                const update = () => {
+                    const denominator = document.documentElement.scrollHeight - window.innerHeight;
+                    const progress = denominator > 0 ? (window.scrollY / denominator) * 100 : 0;
+                    this.progressBar.style.width = `${Math.min(Math.max(progress, 0), 100)}%`;
+                };
+
+                update();
+                window.addEventListener("scroll", update, { passive: true });
+                window.addEventListener("resize", update);
+            }
+
+            setupNavDots() {
+                this.navDots.innerHTML = "";
+                this.slides.forEach((_, index) => {
+                    const button = document.createElement("button");
+                    button.className = "nav-dot";
+                    button.type = "button";
+                    button.setAttribute("aria-label", `Jump to slide ${index + 1}`);
+                    button.addEventListener("click", () => this.goToSlide(index));
+                    this.navDots.appendChild(button);
+                });
+            }
+
+            setupWindowedMode() {
+                const applyMode = () => {
+                    const isWindowed =
+                        window.innerWidth < 1440 ||
+                        window.innerHeight < 860 ||
+                        (window.innerWidth / Math.max(window.innerHeight, 1)) < 1.58;
+                    document.body.classList.toggle("windowed-mode", isWindowed);
+                    document.documentElement.classList.toggle("windowed-mode", isWindowed);
+                };
+
+                applyMode();
+                window.addEventListener("resize", applyMode);
+            }
+
+            setupCursorEffect() {
+                if (!this.cursorDot || !this.cursorTrail) return;
+                if (window.matchMedia("(pointer: coarse)").matches) return;
+                if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+                let trailX = window.innerWidth / 2;
+                let trailY = window.innerHeight / 2;
+                let pointerX = trailX;
+                let pointerY = trailY;
+                let isVisible = false;
+
+                const render = () => {
+                    trailX += (pointerX - trailX) * 0.16;
+                    trailY += (pointerY - trailY) * 0.16;
+                    this.cursorDot.style.transform = `translate(${pointerX}px, ${pointerY}px) translate(-50%, -50%)`;
+                    this.cursorTrail.style.transform = `translate(${trailX}px, ${trailY}px) translate(-50%, -50%)`;
+                    window.requestAnimationFrame(render);
+                };
+
+                window.addEventListener("mousemove", (event) => {
+                    pointerX = event.clientX;
+                    pointerY = event.clientY;
+                    if (!isVisible) {
+                        isVisible = true;
+                        document.body.classList.add("cursor-active");
+                    }
+                }, { passive: true });
+
+                window.addEventListener("mouseleave", () => {
+                    isVisible = false;
+                    document.body.classList.remove("cursor-active");
+                });
+
+                render();
+            }
+
+            goToSlide(index) {
+                const nextIndex = Math.max(0, Math.min(index, this.slides.length - 1));
+                if (nextIndex === this.currentSlide || this.isAnimating) return;
+                this.isAnimating = true;
+                this.slides[nextIndex].scrollIntoView({ behavior: "smooth", block: "start" });
+                window.setTimeout(() => {
+                    this.isAnimating = false;
+                    this.updateActiveState(nextIndex);
+                }, 700);
+            }
+
+            updateActiveState(index) {
+                this.currentSlide = index;
+                const dots = Array.from(this.navDots.children);
+                dots.forEach((dot, dotIndex) => {
+                    dot.classList.toggle("active", dotIndex === index);
+                });
+            }
+        }
+
+        new SlidePresentation();
+    </script>
+</body>
+</html>
